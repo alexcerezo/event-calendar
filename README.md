@@ -15,6 +15,18 @@ npm run dev
 `npm run build` genera la web estática en `dist`. `npm run preview` permite
 previsualizarla y `npm test` comprueba los filtros.
 
+## GitHub Pages
+
+En **Settings > Pages > Build and deployment > Source**, selecciona
+**GitHub Actions**. El workflow `.github/workflows/deploy-pages.yml` ejecuta las
+pruebas, compila con Vite y publica exclusivamente `dist` al actualizar `main`.
+También se puede lanzar manualmente desde Actions.
+
+No publiques la raíz del repositorio con **Deploy from a branch**: el HTML
+fuente carga `/src/main.js` y necesita la compilación de Vite. Publicarlo
+directamente provoca un 404 y deja la página en blanco. La compilación usa rutas
+relativas para funcionar tanto en `/event-calendar/` como en un dominio propio.
+
 ## Datos y privacidad
 
 Los eventos de `src/events.js` son ejemplos ficticios, no una agenda verificada.
